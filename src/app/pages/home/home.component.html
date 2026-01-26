@@ -1,0 +1,33 @@
+﻿<main class="home-page">
+  <section class="home-screen" aria-label="Home">
+    <div class="home-content">
+      <div class="search-box" role="search">
+        <input type="text" placeholder="Digite a cidade" />
+        <button class="search-button" type="button" aria-label="Pesquisar">
+          <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 10-.71.71l.27.28v.79L20 20.5 21.5 19 15.5 14zm-6 0a4.5 4.5 0 110-9 4.5 4.5 0 010 9z"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <ul class="city-list">
+        @for (city of cities; track city.id) {
+          <li>
+            <a class="city-card" [routerLink]="['/details', city.id]">
+              <img
+                class="city-icon"
+                src="assets/home/weather-icon.svg"
+                alt=""
+                aria-hidden="true"
+              />
+              <span class="city-name">{{ city.name }}</span>
+              <span class="city-temp">{{ city.current }}&ordm;</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+</main>

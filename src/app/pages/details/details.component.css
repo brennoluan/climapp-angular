@@ -1,0 +1,270 @@
+﻿:host {
+  display: block;
+}
+
+.details-page {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #05051f;
+}
+
+.details-screen {
+  width: min(360px, 100%);
+  min-height: min(646px, 100dvh);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #00457d 0%, #05051f 100%);
+  display: flex;
+  box-shadow: 0 18px 40px rgba(2, 10, 24, 0.45);
+  position: relative;
+  overflow: hidden;
+}
+
+.details-content {
+  width: 100%;
+  max-width: 328px;
+  margin: 0 auto;
+  padding: 40px 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.details-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  color: #ffffff;
+}
+
+.details-header h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.back-button {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.back-button .material-icons {
+  font-size: 24px;
+}
+
+.back-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+  border-radius: 50%;
+}
+
+.header-spacer {
+  width: 23px;
+  height: 23px;
+}
+
+.details-card {
+  width: 100%;
+  background: #4463d5;
+  border-radius: 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: #ffffff;
+}
+
+.card-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 4px 30px;
+}
+
+.weather-large {
+  width: 73px;
+  height: auto;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.temperature {
+  font-size: 43px;
+  font-weight: 700;
+  line-height: 1.22;
+}
+
+.condition {
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.stat-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stat-icon {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+  border-radius: 8px;
+}
+
+.stat-icon .material-icons {
+  font-size: 16px;
+}
+
+.stat-icon.humidity .material-icons {
+  color: #379adc;
+}
+
+.stat-icon.temp .material-icons {
+  color: #e4750e;
+}
+
+.stat-title {
+  font-weight: 600;
+}
+
+.forecast {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+}
+
+.forecast-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 8px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  text-align: center;
+}
+
+.forecast-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.forecast-day span:last-child {
+  font-size: 13px;
+}
+
+.forecast-icon {
+  width: 27px;
+  height: 24px;
+}
+
+.forecast-temp {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.details-content > * {
+  animation: lift-in 600ms ease-out both;
+}
+
+.details-content > *:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.details-content > *:nth-child(3) {
+  animation-delay: 220ms;
+}
+
+@keyframes lift-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 420px) {
+  .details-page {
+    padding: 0;
+  }
+
+  .details-screen {
+    width: 100%;
+    min-height: 100dvh;
+    border-radius: 0;
+  }
+
+  .details-content {
+    padding: 32px 0 40px;
+  }
+}
+
+@media (max-height: 640px) {
+  .details-content {
+    padding-top: 24px;
+    gap: 28px;
+  }
+
+  .forecast {
+    gap: 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .details-content > * {
+    animation: none;
+  }
+}
