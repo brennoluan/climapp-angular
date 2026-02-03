@@ -16,7 +16,7 @@ import { FormsModule } from '@angular/forms';
 export class DetailsComponent {
 
   email = "teste@email.com";
-  forecastDays = 3;
+  forecastDays = 0;
   rainAlerts = true;
   temperatureUnit = "C";
   alertPeriod = "Manhã";
