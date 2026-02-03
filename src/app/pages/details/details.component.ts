@@ -3,18 +3,19 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 import { cities } from '../../data/cities';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsComponent {
 
-  email = "";
+  email = "teste@email.com";
 
   private route = inject(ActivatedRoute);
   private cityId = toSignal(

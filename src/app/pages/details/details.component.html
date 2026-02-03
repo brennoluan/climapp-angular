@@ -60,7 +60,7 @@
 
       <div class="newsletter-area">
         <label for="newsletter-email">Inscreva-se para atualizações:</label>
-        <input id="newsletter-email" type="email" placeholder="Digite seu e-mail" />
+        <input id="newsletter-email" type="email" placeholder="Digite seu e-mail" [(ngModel)]="email" />
         <button class="newsletter-button" type="button" (click)="subscribe()">
           Enviar
         </button>
