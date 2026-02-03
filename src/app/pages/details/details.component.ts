@@ -13,6 +13,9 @@ import { cities } from '../../data/cities';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsComponent {
+
+  email = "";
+
   private route = inject(ActivatedRoute);
   private cityId = toSignal(
     this.route.paramMap.pipe(map((params) => params.get('id') ?? cities[0].id)),
@@ -22,4 +25,11 @@ export class DetailsComponent {
   readonly city = computed(
     () => cities.find((item) => item.id === this.cityId()) ?? cities[0]
   );
+
+  subscribe(): void {
+
+    alert('Cadastro realizado ' + this.email + "!");
+  
+  }
+  
 }

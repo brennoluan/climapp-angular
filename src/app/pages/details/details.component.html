@@ -16,12 +16,7 @@
         </div>
 
         <div class="card-weather">
-          <img
-            class="weather-large"
-            src="assets/details/weather-large.svg"
-            alt=""
-            aria-hidden="true"
-          />
+          <img class="weather-large" src="assets/details/weather-large.svg" alt="" aria-hidden="true" />
           <div class="weather-info">
             <div class="temperature">{{ city().current }}&ordm;</div>
             <div class="condition">{{ city().condition }}</div>
@@ -52,20 +47,23 @@
 
       <div class="forecast">
         @for (item of city().forecast; track item.label) {
-          <article class="forecast-card">
-            <div class="forecast-day">
-              <span>{{ item.label }}</span>
-              <span>{{ item.date }}</span>
-            </div>
-            <img
-              class="forecast-icon"
-              src="assets/details/weather-small.svg"
-              alt=""
-              aria-hidden="true"
-            />
-            <span class="forecast-temp">{{ item.min }}/{{ item.max }}&ordm;</span>
-          </article>
+        <article class="forecast-card">
+          <div class="forecast-day">
+            <span>{{ item.label }}</span>
+            <span>{{ item.date }}</span>
+          </div>
+          <img class="forecast-icon" src="assets/details/weather-small.svg" alt="" aria-hidden="true" />
+          <span class="forecast-temp">{{ item.min }}/{{ item.max }}&ordm;</span>
+        </article>
         }
+      </div>
+
+      <div class="newsletter-area">
+        <label for="newsletter-email">Inscreva-se para atualizações:</label>
+        <input id="newsletter-email" type="email" placeholder="Digite seu e-mail" />
+        <button class="newsletter-button" type="button" (click)="subscribe()">
+          Enviar
+        </button>
       </div>
     </div>
   </section>
