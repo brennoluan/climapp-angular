@@ -58,13 +58,14 @@
         }
       </div>
 
-      <div class="newsletter-area">
+      <form class="newsletter-area" (ngSubmit)="subscribe()">
         <label for="newsletter-email">Inscreva-se para atualizações:</label>
-        <input id="newsletter-email" type="email" placeholder="Digite seu e-mail" [(ngModel)]="email" />
-        <button class="newsletter-button" type="button" (click)="subscribe()">
+        <input id="newsletter-email" name="email-newsletter" type="email" placeholder="Digite seu e-mail"
+          [(ngModel)]="email" />
+        <button class="newsletter-button" type="submit">
           Enviar
         </button>
-      </div>
+      </form>
     </div>
   </section>
 </main>
