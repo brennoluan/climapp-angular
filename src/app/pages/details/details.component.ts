@@ -16,6 +16,13 @@ import { FormsModule } from '@angular/forms';
 export class DetailsComponent {
 
   email = "teste@email.com";
+  forecastDays = 3;
+  rainAlerts = true;
+  temperatureUnit = "C";
+  alertPeriod = "Manhã";
+  alertStart = "2026-02-03";
+  alertTime = "08:00";
+  alertSensitivity = 60;
 
   private route = inject(ActivatedRoute);
   private cityId = toSignal(
@@ -29,8 +36,19 @@ export class DetailsComponent {
 
   subscribe(): void {
 
-    alert('Cadastro realizado ' + this.email + "!");
+    alert(`Cadastro realizado ${this.email}!`);
   
+  }
+
+  savePreferences(): void {
+    const alertSchedule = `${this.alertStart} ${this.alertTime}`;
+
+    alert(
+      `Preferências salvas para ${this.city().name}: ${this.forecastDays} dias, ` +
+      `${this.temperatureUnit}, ${this.alertPeriod.toLowerCase()}, ` +
+      `chuva ${this.rainAlerts ? "ativada" : "desativada"} e sensibilidade ${this.alertSensitivity}%. ` +
+      `(${alertSchedule})`
+    );
   }
   
 }
