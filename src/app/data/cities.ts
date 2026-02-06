@@ -69,7 +69,7 @@ export const cities: City[] = [
   },
   {
     id: 'sao-paulo',
-    name: 'Sao Paulo - SP',
+    name: 'São Paulo - SP',
     current: 28,
     condition: 'Parcialmente nublado',
     humidity: 60,
