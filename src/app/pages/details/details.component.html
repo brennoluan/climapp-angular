@@ -1,4 +1,4 @@
-﻿<main class="details-page">
+<main class="details-page">
   <section class="details-screen" aria-label="Detalhes da temperatura">
     <div class="details-content">
       <header class="details-header">
@@ -9,136 +9,149 @@
         <span class="header-spacer" aria-hidden="true"></span>
       </header>
 
-      <section class="details-card">
-        <div class="card-date">
-          <span>{{ city().todayLabel }}</span>
-          <span>{{ city().todayDate }}</span>
-        </div>
-
-        <div class="card-weather">
-          <img class="weather-large" src="assets/details/weather-large.svg" alt="" aria-hidden="true" />
-          <div class="weather-info">
-            <div class="temperature">{{ city().current }}&ordm;</div>
-            <div class="condition">{{ city().condition }}</div>
-          </div>
-        </div>
-
-        <div class="stats">
-          <div class="stat-row">
-            <div class="stat-label">
-              <span class="stat-icon humidity">
-                <span class="material-icons">water_drop</span>
-              </span>
-              <span class="stat-title">Humidity:</span>
+      <div class="details-layout">
+        <div class="details-main">
+          <section class="details-card">
+            <div class="card-date">
+              <span>{{ city().todayLabel }}</span>
+              <span>{{ city().todayDate }}</span>
             </div>
-            <span class="stat-value">{{ city().humidity }}%</span>
-          </div>
-          <div class="stat-row">
-            <div class="stat-label">
-              <span class="stat-icon temp">
-                <span class="material-icons">device_thermostat</span>
-              </span>
-              <span class="stat-title">Min/Max:</span>
+
+            <div class="card-weather">
+              <img class="weather-large" src="assets/details/weather-large.svg" alt="" aria-hidden="true" />
+              <div class="weather-info">
+                <div class="temperature">{{ city().current }}&ordm;</div>
+                <div class="condition">{{ city().condition }}</div>
+              </div>
             </div>
-            <span class="stat-value">{{ city().min }}/{{ city().max }}&ordm;</span>
+
+            <div class="stats">
+              <div class="stat-row">
+                <div class="stat-label">
+                  <span class="stat-icon humidity">
+                    <span class="material-icons">water_drop</span>
+                  </span>
+                  <span class="stat-title">Humidity:</span>
+                </div>
+                <span class="stat-value">{{ city().humidity }}%</span>
+              </div>
+              <div class="stat-row">
+                <div class="stat-label">
+                  <span class="stat-icon temp">
+                    <span class="material-icons">device_thermostat</span>
+                  </span>
+                  <span class="stat-title">Min/Max:</span>
+                </div>
+                <span class="stat-value">{{ city().min }}/{{ city().max }}&ordm;</span>
+              </div>
+            </div>
+          </section>
+
+          <div class="forecast">
+            @for (item of city().forecast; track item.label) {
+              <article class="forecast-card">
+                <div class="forecast-day">
+                  <span>{{ item.label }}</span>
+                  <span>{{ item.date }}</span>
+                </div>
+                <img class="forecast-icon" src="assets/details/weather-small.svg" alt="" aria-hidden="true" />
+                <span class="forecast-temp">{{ item.min }}/{{ item.max }}&ordm;</span>
+              </article>
+            }
           </div>
         </div>
-      </section>
 
-      <div class="forecast">
-        @for (item of city().forecast; track item.label) {
-        <article class="forecast-card">
-          <div class="forecast-day">
-            <span>{{ item.label }}</span>
-            <span>{{ item.date }}</span>
-          </div>
-          <img class="forecast-icon" src="assets/details/weather-small.svg" alt="" aria-hidden="true" />
-          <span class="forecast-temp">{{ item.min }}/{{ item.max }}&ordm;</span>
-        </article>
-        }
+        <aside class="details-side">
+          <form class="newsletter-area" (ngSubmit)="subscribe()">
+            <label for="newsletter-email">Inscreva-se para atualizações:</label>
+            <input
+              id="newsletter-email"
+              name="email-newsletter"
+              type="email"
+              placeholder="Digite seu e-mail"
+              [(ngModel)]="email"
+            />
+            <button class="newsletter-button" type="submit">
+              Enviar
+            </button>
+          </form>
+
+          <form class="preferences-area" (ngSubmit)="savePreferences()">
+            <h2 class="preferences-title">Preferências de alerta</h2>
+            <div class="preferences-grid">
+              <div class="preference-field">
+                <label for="pref-days">Dias de previsão</label>
+                <input id="pref-days" name="forecastDays" type="number" min="1" max="7" [(ngModel)]="forecastDays" />
+              </div>
+
+              <div class="preference-field">
+                <label class="option-row" for="pref-rain">
+                  <input id="pref-rain" name="rainAlerts" type="checkbox" [(ngModel)]="rainAlerts" />
+                  Ativar alerta de chuva
+                </label>
+              </div>
+
+              <div class="preference-field">
+                <label for="pref-unit">Unidade de temperatura</label>
+                <select id="pref-unit" name="temperatureUnit" [(ngModel)]="temperatureUnit">
+                  <option value="C">Celsius (°C)</option>
+                  <option value="F">Fahrenheit (°F)</option>
+                </select>
+              </div>
+
+              <div class="preference-field">
+                <span class="field-title">Período do alerta</span>
+                <label class="option-row">
+                  <input type="radio" name="alertPeriod" value="Manhã" [(ngModel)]="alertPeriod" />
+                  Manhã
+                </label>
+                <label class="option-row">
+                  <input type="radio" name="alertPeriod" value="Tarde" [(ngModel)]="alertPeriod" />
+                  Tarde
+                </label>
+                <label class="option-row">
+                  <input type="radio" name="alertPeriod" value="Noite" [(ngModel)]="alertPeriod" />
+                  Noite
+                </label>
+              </div>
+
+              <div class="preference-field">
+                <label for="pref-start">Início dos alertas</label>
+                <input id="pref-start" name="alertStart" type="date" [(ngModel)]="alertStart" />
+              </div>
+
+              <div class="preference-field">
+                <label for="pref-time">Horário preferido</label>
+                <input id="pref-time" name="alertTime" type="time" [(ngModel)]="alertTime" />
+              </div>
+
+              <div class="preference-field">
+                <label for="pref-sensitivity">
+                  Sensibilidade para chuva: {{ alertSensitivity }}%
+                </label>
+                <input
+                  id="pref-sensitivity"
+                  name="alertSensitivity"
+                  [(ngModel)]="alertSensitivity"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                />
+              </div>
+            </div>
+
+            <p class="preferences-summary">
+              Resumo: {{ forecastDays }} dias, {{ temperatureUnit }}, {{ alertPeriod.toLowerCase() }},
+              chuva {{ rainAlerts ? 'ativada' : 'desativada' }}.
+            </p>
+
+            <button class="preferences-button" type="submit">
+              Salvar preferências
+            </button>
+          </form>
+        </aside>
       </div>
-
-      <form class="newsletter-area" (ngSubmit)="subscribe()">
-        <label for="newsletter-email">Inscreva-se para atualizações:</label>
-        <input id="newsletter-email" name="email-newsletter" type="email" placeholder="Digite seu e-mail"
-          [(ngModel)]="email" />
-        <button class="newsletter-button" type="submit">
-          Enviar
-        </button>
-      </form>
-
-      <form class="preferences-area" (ngSubmit)="savePreferences()">
-        <h2 class="preferences-title">Preferências de alerta</h2>
-        <div class="preferences-grid">
-
-          <!-- Numérico -->
-          <div class="preference-field">
-            <label for="pref-days">Dias de previsão</label>
-            <input id="pref-days" name="forecastDays" type="number" min="1" max="7" [(ngModel)]="forecastDays" />
-          </div>
-
-          <!-- Booleano (Checkbox) -->
-          <div class="preference-field">
-            <label class="option-row" for="pref-rain">
-              <input id="pref-rain" name="rainAlerts" type="checkbox" [(ngModel)]="rainAlerts" />
-              Ativar alerta de chuva
-            </label>
-          </div>
-
-          <!-- Select -->
-          <div class="preference-field">
-            <label for="pref-unit">Unidade de temperatura</label>
-            <select id="pref-unit" name="temperatureUnit" [(ngModel)]="temperatureUnit">
-              <option value="C">Celsius (°C)</option>
-              <option value="F">Fahrenheit (°F)</option>
-            </select>
-          </div>
-
-          <div class="preference-field">
-            <span class="field-title">Período do alerta</span>
-            <label class="option-row">
-              <input type="radio" name="alertPeriod" value="Manhã" [(ngModel)]="alertPeriod" />
-              Manhã
-            </label>
-            <label class="option-row">
-              <input type="radio" name="alertPeriod" value="Tarde" [(ngModel)]="alertPeriod" />
-              Tarde
-            </label>
-            <label class="option-row">
-              <input type="radio" name="alertPeriod" value="Noite" [(ngModel)]="alertPeriod" />
-              Noite
-            </label>
-          </div>
-
-          <div class="preference-field">
-            <label for="pref-start">Início dos alertas</label>
-            <input id="pref-start" name="alertStart" type="date" [(ngModel)]="alertStart" />
-          </div>
-
-          <div class="preference-field">
-            <label for="pref-time">Horário preferido</label>
-            <input id="pref-time" name="alertTime" type="time" [(ngModel)]="alertTime" />
-          </div>
-
-          <div class="preference-field">
-            <label for="pref-sensitivity">
-              Sensibilidade para chuva: {{ alertSensitivity }}%
-            </label>
-            <input id="pref-sensitivity" name="alertSensitivity" [(ngModel)]="alertSensitivity" type="range" min="0"
-              max="100" step="10" />
-          </div>
-        </div>
-
-        <p class="preferences-summary">
-          Resumo: {{ forecastDays }} dias, {{ temperatureUnit }}, {{ alertPeriod.toLowerCase() }},
-          chuva {{ rainAlerts ? 'ativada' : 'desativada' }}.
-        </p>
-
-        <button class="preferences-button" type="submit">
-          Salvar preferências
-        </button>
-      </form>
-
     </div>
   </section>
 </main>
