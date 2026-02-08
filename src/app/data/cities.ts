@@ -30,7 +30,7 @@ export const cities: City[] = [
     todayLabel: 'Hoje',
     todayDate: '(01/12)',
     forecast: [
-      { label: 'Amanha', date: '(02/12)', min: 14, max: 23 },
+      { label: 'Amanhã', date: '(02/12)', min: 14, max: 23 },
       { label: 'Quarta-feira', date: '(03/12)', min: 15, max: 24 },
       { label: 'Quinta-feira', date: '(04/12)', min: 13, max: 21 }
     ]
@@ -46,7 +46,7 @@ export const cities: City[] = [
     todayLabel: 'Hoje',
     todayDate: '(01/12)',
     forecast: [
-      { label: 'Amanha', date: '(02/12)', min: 17, max: 25 },
+      { label: 'Amanhã', date: '(02/12)', min: 17, max: 25 },
       { label: 'Quarta-feira', date: '(03/12)', min: 15, max: 23 },
       { label: 'Quinta-feira', date: '(04/12)', min: 18, max: 27 }
     ]
@@ -62,7 +62,7 @@ export const cities: City[] = [
     todayLabel: 'Hoje',
     todayDate: '(01/12)',
     forecast: [
-      { label: 'Amanha', date: '(02/12)', min: 23, max: 30 },
+      { label: 'Amanhã', date: '(02/12)', min: 23, max: 30 },
       { label: 'Quarta-feira', date: '(03/12)', min: 22, max: 29 },
       { label: 'Quinta-feira', date: '(04/12)', min: 24, max: 32 }
     ]
@@ -78,7 +78,7 @@ export const cities: City[] = [
     todayLabel: 'Hoje',
     todayDate: '(01/12)',
     forecast: [
-      { label: 'Amanha', date: '(02/12)', min: 20, max: 29 },
+      { label: 'Amanhã', date: '(02/12)', min: 20, max: 29 },
       { label: 'Quarta-feira', date: '(03/12)', min: 19, max: 28 },
       { label: 'Quinta-feira', date: '(04/12)', min: 21, max: 31 }
     ]
@@ -94,7 +94,7 @@ export const cities: City[] = [
     todayLabel: 'Hoje',
     todayDate: '(01/12)',
     forecast: [
-      { label: 'Amanha', date: '(02/12)', min: 29, max: 36 },
+      { label: 'Amanhã', date: '(02/12)', min: 29, max: 36 },
       { label: 'Quarta-feira', date: '(03/12)', min: 27, max: 35 },
       { label: 'Quinta-feira', date: '(04/12)', min: 28, max: 37 }
     ]
