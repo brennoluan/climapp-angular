@@ -75,19 +75,19 @@
             <div class="preferences-grid">
               <div class="preference-field">
                 <label for="pref-days">Dias de previsão</label>
-                <input id="pref-days" name="forecastDays" type="number" min="1" max="7" [(ngModel)]="forecastDays" />
+                <input id="pref-days" name="forecastDays" type="number" min="1" max="7" />
               </div>
 
               <div class="preference-field">
                 <label class="option-row" for="pref-rain">
-                  <input id="pref-rain" name="rainAlerts" type="checkbox" [(ngModel)]="rainAlerts" />
+                  <input id="pref-rain" name="rainAlerts" type="checkbox" />
                   Ativar alerta de chuva
                 </label>
               </div>
 
               <div class="preference-field">
                 <label for="pref-unit">Unidade de temperatura</label>
-                <select id="pref-unit" name="temperatureUnit" [(ngModel)]="temperatureUnit">
+                <select id="pref-unit" name="temperatureUnit">
                   <option value="C">Celsius (°C)</option>
                   <option value="F">Fahrenheit (°F)</option>
                 </select>
@@ -96,35 +96,34 @@
               <div class="preference-field">
                 <span class="field-title">Período do alerta</span>
                 <label class="option-row">
-                  <input type="radio" name="alertPeriod" value="Manhã" [(ngModel)]="alertPeriod" />
+                  <input type="radio" name="alertPeriod" value="Manhã" />
                   Manhã
                 </label>
                 <label class="option-row">
-                  <input type="radio" name="alertPeriod" value="Tarde" [(ngModel)]="alertPeriod" />
+                  <input type="radio" name="alertPeriod" value="Tarde" />
                   Tarde
                 </label>
                 <label class="option-row">
-                  <input type="radio" name="alertPeriod" value="Noite" [(ngModel)]="alertPeriod" />
+                  <input type="radio" name="alertPeriod" value="Noite" />
                   Noite
                 </label>
               </div>
 
               <div class="preference-field">
                 <label for="pref-start">Início dos alertas</label>
-                <input id="pref-start" name="alertStart" type="date" [(ngModel)]="alertStart" />
+                <input id="pref-start" name="alertStart" type="date" />
               </div>
 
               <div class="preference-field">
                 <label for="pref-time">Horário preferido</label>
-                <input id="pref-time" name="alertTime" type="time" [(ngModel)]="alertTime" />
+                <input id="pref-time" name="alertTime" type="time" />
               </div>
 
               <div class="preference-field">
                 <label for="pref-sensitivity">
                   Sensibilidade para chuva: {{ alertSensitivity }}%
                 </label>
-                <input id="pref-sensitivity" name="alertSensitivity" [(ngModel)]="alertSensitivity" type="range" min="0"
-                  max="100" step="10" />
+                <input id="pref-sensitivity" name="alertSensitivity" type="range" min="0" max="100" step="10" />
               </div>
             </div>
 
