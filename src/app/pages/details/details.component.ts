@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class DetailsComponent {
 
-  email = "teste@email.com";
+  email = "";
   forecastDays = 0;
   rainAlerts = true;
   temperatureUnit = "C";
@@ -35,9 +35,7 @@ export class DetailsComponent {
   );
 
   subscribe(): void {
-
     alert(`Cadastro realizado ${this.email}!`);
-  
   }
 
   savePreferences(): void {

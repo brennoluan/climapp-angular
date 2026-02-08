@@ -49,32 +49,26 @@
 
           <div class="forecast">
             @for (item of city().forecast; track item.label) {
-              <article class="forecast-card">
-                <div class="forecast-day">
-                  <span>{{ item.label }}</span>
-                  <span>{{ item.date }}</span>
-                </div>
-                <img class="forecast-icon" src="assets/details/weather-small.svg" alt="" aria-hidden="true" />
-                <span class="forecast-temp">{{ item.min }}/{{ item.max }}&ordm;</span>
-              </article>
+            <article class="forecast-card">
+              <div class="forecast-day">
+                <span>{{ item.label }}</span>
+                <span>{{ item.date }}</span>
+              </div>
+              <img class="forecast-icon" src="assets/details/weather-small.svg" alt="" aria-hidden="true" />
+              <span class="forecast-temp">{{ item.min }}/{{ item.max }}&ordm;</span>
+            </article>
             }
           </div>
         </div>
 
         <aside class="details-side">
-          <form class="newsletter-area" (ngSubmit)="subscribe()">
+          <div class="newsletter-area">
             <label for="newsletter-email">Inscreva-se para atualizações:</label>
-            <input
-              id="newsletter-email"
-              name="email-newsletter"
-              type="email"
-              placeholder="Digite seu e-mail"
-              [(ngModel)]="email"
-            />
-            <button class="newsletter-button" type="submit">
+            <input id="newsletter-email" name="email-newsletter" type="email" placeholder="Digite seu e-mail" />
+            <button class="newsletter-button" type="button" (click)="subscribe()">
               Enviar
             </button>
-          </form>
+          </div>
 
           <form class="preferences-area" (ngSubmit)="savePreferences()">
             <h2 class="preferences-title">Preferências de alerta</h2>
@@ -129,15 +123,8 @@
                 <label for="pref-sensitivity">
                   Sensibilidade para chuva: {{ alertSensitivity }}%
                 </label>
-                <input
-                  id="pref-sensitivity"
-                  name="alertSensitivity"
-                  [(ngModel)]="alertSensitivity"
-                  type="range"
-                  min="0"
-                  max="100"
-                  step="10"
-                />
+                <input id="pref-sensitivity" name="alertSensitivity" [(ngModel)]="alertSensitivity" type="range" min="0"
+                  max="100" step="10" />
               </div>
             </div>
 
