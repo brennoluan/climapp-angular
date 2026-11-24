@@ -18,7 +18,12 @@
             </div>
 
             <div class="card-weather">
-              <img class="weather-large" src="assets/details/weather-large.svg" alt="" aria-hidden="true" />
+              <img
+                class="weather-large"
+                src="assets/details/weather-large.svg"
+                alt=""
+                aria-hidden="true"
+              />
               <div class="weather-info">
                 <div class="temperature">{{ city().current }}&ordm;</div>
                 <div class="condition">{{ city().condition }}</div>
@@ -49,45 +54,66 @@
 
           <div class="forecast">
             @for (item of city().forecast; track item.label) {
-            <article class="forecast-card">
-              <div class="forecast-day">
-                <span>{{ item.label }}</span>
-                <span>{{ item.date }}</span>
-              </div>
-              <img class="forecast-icon" src="assets/details/weather-small.svg" alt="" aria-hidden="true" />
-              <span class="forecast-temp">{{ item.min }}/{{ item.max }}&ordm;</span>
-            </article>
+              <article class="forecast-card">
+                <div class="forecast-day">
+                  <span>{{ item.label }}</span>
+                  <span>{{ item.date }}</span>
+                </div>
+                <img
+                  class="forecast-icon"
+                  src="assets/details/weather-small.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+                <span class="forecast-temp">{{ item.min }}/{{ item.max }}&ordm;</span>
+              </article>
             }
           </div>
         </div>
 
         <aside class="details-side">
-          <div class="newsletter-area">
+          <form class="newsletter-area" (ngSubmit)="subscribe()">
             <label for="newsletter-email">Inscreva-se para atualizações:</label>
-            <input id="newsletter-email" name="email-newsletter" type="email" placeholder="Digite seu e-mail" />
-            <button class="newsletter-button" type="button" (click)="subscribe()">
-              Enviar
-            </button>
-          </div>
+            <input
+              id="newsletter-email"
+              name="email-newsletter"
+              type="email"
+              placeholder="Digite seu e-mail"
+              [(ngModel)]="email"
+            />
+            <button class="newsletter-button" type="submit">Enviar</button>
+          </form>
 
           <form class="preferences-area" (ngSubmit)="savePreferences()">
             <h2 class="preferences-title">Preferências de alerta</h2>
             <div class="preferences-grid">
               <div class="preference-field">
                 <label for="pref-days">Dias de previsão</label>
-                <input id="pref-days" name="forecastDays" type="number" min="1" max="7" />
+                <input
+                  id="pref-days"
+                  name="forecastDays"
+                  type="number"
+                  min="1"
+                  max="7"
+                  [(ngModel)]="forecastDays"
+                />
               </div>
 
               <div class="preference-field">
                 <label class="option-row" for="pref-rain">
-                  <input id="pref-rain" name="rainAlerts" type="checkbox" />
+                  <input
+                    id="pref-rain"
+                    name="rainAlerts"
+                    type="checkbox"
+                    [(ngModel)]="rainAlerts"
+                  />
                   Ativar alerta de chuva
                 </label>
               </div>
 
               <div class="preference-field">
                 <label for="pref-unit">Unidade de temperatura</label>
-                <select id="pref-unit" name="temperatureUnit">
+                <select id="pref-unit" name="temperatureUnit" [(ngModel)]="temperatureUnit">
                   <option value="C">Celsius (°C)</option>
                   <option value="F">Fahrenheit (°F)</option>
                 </select>
@@ -96,45 +122,51 @@
               <div class="preference-field">
                 <span class="field-title">Período do alerta</span>
                 <label class="option-row">
-                  <input type="radio" name="alertPeriod" value="Manhã" />
+                  <input type="radio" name="alertPeriod" value="Manhã" [(ngModel)]="alertPeriod" />
                   Manhã
                 </label>
                 <label class="option-row">
-                  <input type="radio" name="alertPeriod" value="Tarde" />
+                  <input type="radio" name="alertPeriod" value="Tarde" [(ngModel)]="alertPeriod" />
                   Tarde
                 </label>
                 <label class="option-row">
-                  <input type="radio" name="alertPeriod" value="Noite" />
+                  <input type="radio" name="alertPeriod" value="Noite" [(ngModel)]="alertPeriod" />
                   Noite
                 </label>
               </div>
 
               <div class="preference-field">
                 <label for="pref-start">Início dos alertas</label>
-                <input id="pref-start" name="alertStart" type="date" />
+                <input id="pref-start" name="alertStart" type="date" [(ngModel)]="alertStart" />
               </div>
 
               <div class="preference-field">
                 <label for="pref-time">Horário preferido</label>
-                <input id="pref-time" name="alertTime" type="time" />
+                <input id="pref-time" name="alertTime" type="time" [(ngModel)]="alertTime" />
               </div>
 
               <div class="preference-field">
                 <label for="pref-sensitivity">
                   Sensibilidade para chuva: {{ alertSensitivity }}%
                 </label>
-                <input id="pref-sensitivity" name="alertSensitivity" type="range" min="0" max="100" step="10" />
+                <input
+                  id="pref-sensitivity"
+                  name="alertSensitivity"
+                  type="range"
+                  min="0"
+                  max="100"
+                  step="10"
+                  [(ngModel)]="alertSensitivity"
+                />
               </div>
             </div>
 
             <p class="preferences-summary">
-              Resumo: {{ forecastDays }} dias, {{ temperatureUnit }}, {{ alertPeriod.toLowerCase() }},
-              chuva {{ rainAlerts ? 'ativada' : 'desativada' }}.
+              Resumo: {{ forecastDays }} dias, {{ temperatureUnit }},
+              {{ alertPeriod.toLowerCase() }}, chuva {{ rainAlerts ? 'ativada' : 'desativada' }}.
             </p>
 
-            <button class="preferences-button" type="submit">
-              Salvar preferências
-            </button>
+            <button class="preferences-button" type="submit">Salvar preferências</button>
           </form>
         </aside>
       </div>
