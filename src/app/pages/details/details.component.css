@@ -293,6 +293,10 @@
   cursor: pointer;
 }
 
+.newsletter-button:disabled {
+  background: #b8b8b8;
+}
+
 .newsletter-button:focus-visible {
   outline: 2px solid #ffffff;
   outline-offset: 3px;

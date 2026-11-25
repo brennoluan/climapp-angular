@@ -92,7 +92,9 @@
               placeholder="Digite seu e-mail"
               [(ngModel)]="email"
             />
-            <button class="newsletter-button" type="submit">Enviar</button>
+            <button [disabled]="email.length === 0" class="newsletter-button" type="submit">
+              Enviar
+            </button>
           </form>
 
           <form class="preferences-area" (ngSubmit)="savePreferences()">
