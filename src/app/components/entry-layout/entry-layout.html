@@ -4,21 +4,8 @@
       <div class="intro-text">
         <img class="logo" src="assets/intro/logo.svg" alt="Climapp" />
         <div class="intro-copy">
-          <p class="intro-kicker">
-            <!-- Seu clima em destaque -->
-            <ng-content select="[kicker]"></ng-content>
-          </p>
-          <h1>
-            <!-- Boas-vindas! -->
-            <ng-content select="[title]"></ng-content>
-          </h1>
-          <p class="intro-description">
-            <!-- Previsões claras, alertas inteligentes e um visual pensado para você acompanhar a semana
-            inteira em um só lugar. -->
-            <ng-content select="[description]"></ng-content>
-
-            <ng-content select="[optional-content]"></ng-content>
-          </p>
+          <ng-container *ngTemplateOutlet="intro"></ng-container>
+          <ng-content select="[optional-content]"></ng-content>
         </div>
         <button class="intro-button" type="button" routerLink="/home">
           <span>
@@ -40,3 +27,12 @@
     </div>
   </section>
 </main>
+
+<ng-template #intro>
+  <p class="intro-kicker">Seu clima em destaque</p>
+  <h1>Boas-vindas!</h1>
+  <p class="intro-description">
+    Previsões claras, alertas inteligentes e um visual pensado para você acompanhar a semana inteira
+    em um só lugar.
+  </p>
+</ng-template>
