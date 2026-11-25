@@ -4,7 +4,9 @@
       <div class="intro-text">
         <img class="logo" src="assets/intro/logo.svg" alt="Climapp" />
         <div class="intro-copy">
-          <ng-container *ngTemplateOutlet="intro"></ng-container>
+          <ng-container
+            *ngTemplateOutlet="template() === 'intro' ? intro : notFound"
+          ></ng-container>
           <ng-content select="[optional-content]"></ng-content>
         </div>
         <button class="intro-button" type="button" routerLink="/home">
@@ -34,5 +36,14 @@
   <p class="intro-description">
     Previsões claras, alertas inteligentes e um visual pensado para você acompanhar a semana inteira
     em um só lugar.
+  </p>
+</ng-template>
+
+<ng-template #notFound>
+  <p class="intro-kicker">Página não encontrada</p>
+  <h1>Ops!</h1>
+  <p class="intro-description">
+    A página que você está procurando não existe. Verifique o endereço ou volte para a página
+    inicial.
   </p>
 </ng-template>
