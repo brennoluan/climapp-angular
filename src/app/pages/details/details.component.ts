@@ -5,11 +5,12 @@ import { map } from 'rxjs/operators';
 import { cities } from '../../data/cities';
 import { FormsModule } from '@angular/forms';
 import { DatePipe, DecimalPipe } from '@angular/common';
+import { TempUnitPipe } from '../../pipes/temp-unit.pipe';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, FormsModule, DecimalPipe, DatePipe],
+  imports: [RouterLink, FormsModule, DecimalPipe, DatePipe, TempUnitPipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

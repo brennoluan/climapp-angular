@@ -38,7 +38,7 @@
               }
 
               <div class="weather-info">
-                <div class="temperature">{{ city().current | number: '1.0-0' }}&ordm;</div>
+                <div class="temperature">{{ city().current | tempUnit: 'F' }}</div>
                 <div class="condition">{{ city().condition }}</div>
               </div>
             </div>
