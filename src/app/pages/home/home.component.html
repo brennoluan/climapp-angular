@@ -35,30 +35,32 @@
           <h2>Cidades</h2>
           <p>Selecione uma cidade para ver os detalhes completos.</p>
         </div>
-        <ul class="city-list">
-          @for (city of cities; track city.id) {
-            <li>
-              <a class="city-card" [routerLink]="['/details', city.id]">
-                @if (city.current > 30) {
-                  <span class="city-icon" aria-hidden="true">🔥</span>
-                } @else if (city.current < 17) {
-                  <span class="city-icon" aria-hidden="true">❄️</span>
-                } @else {
-                  <img
-                    class="city-icon"
-                    src="assets/home/weather-icon.svg"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                }
-                <span class="city-name">{{ city.name }}</span>
-                <span class="city-temp">{{ city.current }}&ordm;</span>
-              </a>
-            </li>
-          } @empty {
-            <li class="city-empty">
-              <span class="city-name">Nenhuma cidade encontrada no momento.</span>
-            </li>
+        <ul #cityList class="city-list">
+          @defer (on viewport(cityList)) {
+            @for (city of cities; track city.id) {
+              <li>
+                <a class="city-card" [routerLink]="['/details', city.id]">
+                  @if (city.current > 30) {
+                    <span class="city-icon" aria-hidden="true">🔥</span>
+                  } @else if (city.current < 17) {
+                    <span class="city-icon" aria-hidden="true">❄️</span>
+                  } @else {
+                    <img
+                      class="city-icon"
+                      src="assets/home/weather-icon.svg"
+                      alt=""
+                      aria-hidden="true"
+                    />
+                  }
+                  <span class="city-name">{{ city.name }}</span>
+                  <span class="city-temp">{{ city.current }}&ordm;</span>
+                </a>
+              </li>
+            } @empty {
+              <li class="city-empty">
+                <span class="city-name">Nenhuma cidade encontrada no momento.</span>
+              </li>
+            }
           }
         </ul>
       </section>
