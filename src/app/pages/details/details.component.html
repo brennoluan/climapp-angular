@@ -20,7 +20,9 @@
             <div class="card-weather">
               @switch (city().weather) {
                 @case ('hot') {
-                  <span class="weather-emoji" aria-hidden="true">🔥</span>
+                  <span class="weather-emoji" [attr.aria-label]="'Clima: ' + city().weather"
+                    >🔥</span
+                  >
                 }
                 @case ('cold') {
                   <span class="weather-emoji" aria-hidden="true">❄️</span>
