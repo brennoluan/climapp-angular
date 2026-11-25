@@ -10,6 +10,7 @@ export type City = {
   name: string;
   current: number;
   condition: string;
+  weather: string;
   humidity: number;
   min: number;
   max: number;
@@ -24,6 +25,7 @@ export const cities: City[] = [
     name: 'Florianopolis - SC',
     current: 16,
     condition: 'Sol entre nuvens',
+    weather: 'cold',
     humidity: 93,
     min: 12,
     max: 22,
@@ -40,6 +42,7 @@ export const cities: City[] = [
     name: 'Curitiba - PR',
     current: 20,
     condition: 'Nublado',
+    weather: 'normal',
     humidity: 85,
     min: 16,
     max: 26,
@@ -56,6 +59,7 @@ export const cities: City[] = [
     name: 'Porto Alegre - RS',
     current: 29,
     condition: 'Sol forte',
+    weather: 'normal',
     humidity: 72,
     min: 24,
     max: 31,
@@ -72,6 +76,7 @@ export const cities: City[] = [
     name: 'São Paulo - SP',
     current: 28,
     condition: 'Parcialmente nublado',
+    weather: 'normal',
     humidity: 60,
     min: 21,
     max: 30,
@@ -88,6 +93,7 @@ export const cities: City[] = [
     name: 'Rio de Janeiro - RJ',
     current: 36,
     condition: 'Sol forte',
+    weather: 'hot',
     humidity: 58,
     min: 28,
     max: 37,

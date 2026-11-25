@@ -9,7 +9,8 @@
   justify-content: center;
   padding: 24px;
   background: #05051f;
-  background-image: radial-gradient(circle at 20% 15%, rgba(68, 99, 213, 0.3), transparent 48%),
+  background-image:
+    radial-gradient(circle at 20% 15%, rgba(68, 99, 213, 0.3), transparent 48%),
     radial-gradient(circle at 80% 0%, rgba(118, 147, 255, 0.2), transparent 55%);
 }
 
@@ -488,6 +489,15 @@
 
   .weather-large {
     width: 92px;
+  }
+
+  .weather-emoji {
+    width: 73px;
+    height: 73px;
+    display: grid;
+    place-items: center;
+    font-size: 48px;
+    line-height: 1;
   }
 
   .temperature {
