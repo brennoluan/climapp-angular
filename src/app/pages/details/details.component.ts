@@ -4,17 +4,18 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 import { cities } from '../../data/cities';
 import { FormsModule } from '@angular/forms';
-import { DecimalPipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, FormsModule, DecimalPipe],
+  imports: [RouterLink, FormsModule, DecimalPipe, DatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailsComponent {
+  today = new Date();
 
   email = "";
   forecastDays = 0;

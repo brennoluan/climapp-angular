@@ -14,7 +14,7 @@
           <section class="details-card">
             <div class="card-date">
               <span>{{ city().todayLabel }}</span>
-              <span>{{ city().todayDate }}</span>
+              <span>{{ today | date: 'dd/MM' }}</span>
             </div>
 
             <div class="card-weather">
