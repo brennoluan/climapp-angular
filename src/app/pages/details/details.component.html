@@ -1,11 +1,13 @@
 <main class="details-page">
   <section class="details-screen" aria-label="Detalhes da temperatura">
+    @let currentCity = city();
+
     <div class="details-content">
       <header class="details-header">
         <button class="back-button" type="button" routerLink="/home" aria-label="Voltar">
           <span class="material-icons">chevron_left</span>
         </button>
-        <h1>{{ city().name }}</h1>
+        <h1>{{ currentCity.name }}</h1>
         <span class="header-spacer" aria-hidden="true"></span>
       </header>
 
@@ -13,16 +15,14 @@
         <div class="details-main">
           <section class="details-card">
             <div class="card-date">
-              <span>{{ city().todayLabel }}</span>
+              <span>{{ currentCity.todayLabel }}</span>
               <span>{{ today | date: 'dd/MM' }}</span>
             </div>
 
             <div class="card-weather">
-              @switch (city().weather) {
+              @switch (currentCity.weather) {
                 @case ('hot') {
-                  <span class="weather-emoji" [attr.aria-label]="'Clima: ' + city().weather"
-                    >🔥</span
-                  >
+                  <span class="weather-emoji" [attr.aria-label]="weatherLabel()">🔥</span>
                 }
                 @case ('cold') {
                   <span class="weather-emoji" aria-hidden="true">❄️</span>
@@ -38,8 +38,8 @@
               }
 
               <div class="weather-info">
-                <div class="temperature">{{ city().current | tempUnit: 'F' }}</div>
-                <div class="condition">{{ city().condition | truncate | lowercase }}</div>
+                <div class="temperature">{{ currentCity.current | tempUnit: 'F' }}</div>
+                <div class="condition">{{ currentCity.condition | truncate | lowercase }}</div>
               </div>
             </div>
 
@@ -51,7 +51,7 @@
                   </span>
                   <span class="stat-title">Humidity:</span>
                 </div>
-                <span class="stat-value">{{ city().humidity }}%</span>
+                <span class="stat-value">{{ currentCity.humidity }}%</span>
               </div>
               <div class="stat-row">
                 <div class="stat-label">
@@ -60,13 +60,13 @@
                   </span>
                   <span class="stat-title">Min/Max:</span>
                 </div>
-                <span class="stat-value">{{ city().min }}/{{ city().max }}&ordm;</span>
+                <span class="stat-value">{{ currentCity.min }}/{{ currentCity.max }}&ordm;</span>
               </div>
             </div>
           </section>
 
           <div class="forecast">
-            @for (item of city().forecast; track item.label) {
+            @for (item of currentCity.forecast; track item.label) {
               <article class="forecast-card">
                 <div class="forecast-day">
                   <span>{{ item.label }}</span>

@@ -28,6 +28,10 @@ export class DetailsComponent {
   alertTime = "08:00";
   alertSensitivity = 60;
 
+  weatherLabel = computed(() => {
+    return 'Clima:' + this.city().weather;
+  });
+
   private route = inject(ActivatedRoute);
   private cityId = toSignal(
     this.route.paramMap.pipe(map((params) => params.get('id') ?? cities[0].id)),
