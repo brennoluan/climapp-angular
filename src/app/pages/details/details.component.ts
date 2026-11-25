@@ -4,13 +4,14 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 import { cities } from '../../data/cities';
 import { FormsModule } from '@angular/forms';
-import { DatePipe, DecimalPipe } from '@angular/common';
+import { DatePipe, LowerCasePipe } from '@angular/common';
 import { TempUnitPipe } from '../../pipes/temp-unit.pipe';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [RouterLink, FormsModule, DecimalPipe, DatePipe, TempUnitPipe],
+  imports: [RouterLink, FormsModule, DatePipe, TempUnitPipe, TruncatePipe, LowerCasePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
